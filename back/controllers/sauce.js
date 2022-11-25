@@ -72,10 +72,10 @@ exports.deleteThing = (req, res, next) => {
     });
 };
 
-exports.getAllStuff = (req, res, next) => {
-  Thing.find().then(
-    (things) => {
-      res.status(200).json(things);
+exports.getAllSauces = (req, res, next) => {
+  Sauce.find().then(
+    (sauces) => {
+      res.status(200).json(sauces);
     }
   ).catch(
     (error) => {
