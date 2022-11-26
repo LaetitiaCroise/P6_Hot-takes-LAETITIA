@@ -24,10 +24,14 @@ exports.getOneSauce = (req, res) => {
   };
 
 exports.modifySauce = (req, res, next) => {
-    const sauceObject = req.file ? { // extrait le champs file
-        ...JSON.parse(req.body.sauce),//recupere l'objet en paarcant la chaine de caractere
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`//recrée l'url de l'img
-    } : { ...req.body }; // si c'est pas le cas récupère l'objet dans le corps de la requete
+  // extrait le champs file
+    const sauceObject = req.file ? { 
+      //recupere l'objet en paarcant la chaine de caractere
+        ...JSON.parse(req.body.sauce),
+        //recrée l'url de l'img
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        // si c'est pas le cas récupère l'objet dans le corps de la requete
+    } : { ...req.body }; 
   
     delete sauceObject._userId;
     Sauce.findOne({_id: req.params.id})
