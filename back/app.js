@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const path = require('path');
 
 mongoose.connect('mongodb+srv://Mufasha:Lucas2203!@cluster0.h0omq8l.mongodb.net/?retryWrites=true&w=majority',
+
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
