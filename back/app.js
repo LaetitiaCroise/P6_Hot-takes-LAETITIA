@@ -20,7 +20,7 @@ mongoose.connect(process.env.secretKey,
   const app = express();
 
 //   Middleware :
-//   Pas de route en premier argument car c'est un middleware général,
+//   qui n'a pas de route en premier argument car c'est un middleware général,
 //   Ces headers permettent :
 //   d'accéder a l'api depuis n'importe qu'elle origine ( '*' )
 //   d'ajouter les headers autorisée aux requêtes envoyées vers notre API (Origin , X-Requested-With , etc.) 
@@ -34,8 +34,8 @@ mongoose.connect(process.env.secretKey,
     next();
   });
   
-
-//   Il intercepte toutes les données qui contiennent du JSON
+// Middelware 
+//   qui intercepte toutes les données qui contiennent du JSON
 //   (content-type json) et nous mette à disposition ce contenu
 //   sur l'objet requête dans req.body = "body parser"
 //  
