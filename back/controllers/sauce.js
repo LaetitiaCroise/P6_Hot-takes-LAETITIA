@@ -1,5 +1,10 @@
+// Controllers contient la logique métier qui est appliquer à chaques routes.
+
+// On importe le model sauce
 const Sauce = require('../models/sauce');
+const User = require('../models/User');
 const fs = require('fs');
+
 
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);
@@ -19,7 +24,6 @@ exports.createSauce = (req, res, next) => {
     .then(() => { res.status(201).json({message: 'Objet enregistré !'})})
     .catch(error => { res.status(400).json( { error })})
 };
-
 exports.getOneSauce = (req, res) => {
   // on utilise le modele mangoose et findOne pour trouver un objet via la comparaison req.params.id
   Sauce.findOne({ _id: req.params.id })
@@ -45,10 +49,7 @@ exports.modifySauce = (req, res, next) => {
             if (sauce.userId != req.auth.userId) {
                 res.status(401).json({ message : 'Not authorized'});
             } 
-            if (sauceObject.imageUrl) {
-              const filename = sauce.imageUrl.split("/images/")[1];
-              try {fs.unlinkSync(`./images/${filename}`)}
-              catch (err) {console.error(err)}}
+
             else {
                 Sauce.updateOne({ _id: req.params.id}, { ...sauceObject, _id: req.params.id})
                 .then(() => res.status(200).json({message : 'Objet modifié!'}))

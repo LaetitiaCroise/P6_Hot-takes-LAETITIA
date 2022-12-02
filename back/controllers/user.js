@@ -1,6 +1,9 @@
-const bcrypt = require('bcrypt');
-const User = require('../models/User');
-const jwt = require('jsonwebtoken');
+// Controllers contient la logique métier qui est appliquer à chaques routes.
+
+const bcrypt = require('bcrypt');    // On importe la librairie bcrypt pour le hachage des mots de passes.
+const User = require('../models/User'); // On importe le model user
+const jwt = require('jsonwebtoken');// On importe le package jsonwebtoken pour chiffrer des tokens
+const dotEnv = require('dotenv').config();
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
@@ -15,6 +18,7 @@ exports.signup = (req, res, next) => {
       })
       .catch(error => res.status(500).json({ error }));
   };
+  
 
   exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })

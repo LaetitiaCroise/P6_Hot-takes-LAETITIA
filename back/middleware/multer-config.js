@@ -1,12 +1,15 @@
+
 const multer = require('multer');
 
+
+//  corespond au extension de fichier destinée au envoie 
 const MIME_TYPES = {
   'image/jpg': 'jpg',
   'image/jpeg': 'jpg',
   'image/png': 'png'
 };
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({  // diskStorage fonction de multer
   destination: (req, file, callback) => {
     callback(null, 'images');
   },
