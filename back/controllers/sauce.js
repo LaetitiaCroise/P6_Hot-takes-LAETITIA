@@ -13,10 +13,10 @@ exports.createSauce = (req, res, next) => {
     const sauce = new Sauce({
         ...sauceObject, // L'opérateur spread '...' permet de faire des copies de tous les éléments de req.body
         // userId: req.auth.userId,
-        // // likes: 0,
-        // // dislikes: 0,
-        // // usersDisliked: [],
-        // // usersLiked: [],
+        // likes: 0,
+        // dislikes: 0,
+        // usersDisliked: [],
+        // usersLiked: [],
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
 
