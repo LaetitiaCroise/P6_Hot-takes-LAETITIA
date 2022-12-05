@@ -106,7 +106,6 @@ exports.likeDislike = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
       .then(sauce => {
           const likeType = req.body.like;
-          // L'instruction switch évalue une expression et, selon le résultat obtenu et le cas associé, exécute les instructions correspondantes.
     // Si like = 1, l'utilisateur aime (= likes)
           const userId = req.auth.userId; 
           switch (likeType) {
